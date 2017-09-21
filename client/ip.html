@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IP convert demo</title>
+	<style>
+		body{
+			font-family: Monaco;
+		}
+		.wrap{
+			max-width: 1200px;
+		}
+		.input{
+			width: 150px;
+			height: 28px;
+			border: 1px solid #000;
+			border-radius :20px;
+			padding: 0 25px 0 25px;
+			outline: none;
+			font-weight: bold;
+			letter-spacing: 2px;
+		}
+		.input:focus {
+			border: 1px solid #4AB3F4;
+		}
+		.result{
+			border-bottom: 1px solid black;
+			padding: 1px;
+			display: inline-block;
+			width: 200px;
+			height: 28px;
+			vertical-align: middle;
+			text-align: center;
+			line-height: 28px;
+		}
+		#convert{
+			background-color: #4AB3F4;
+			color: #fff;
+			border-radius: 100px;
+			cursor: pointer;
+			border: 1px solid #1da1f2;
+			height: 28px;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<h3>Convert IPv4 address to integer.</h3>
+	<div class="wrap">
+		<input id="ip" type="text" class="input" placeholder="e.g. 172.168.5.1" />
+		<button id="convert"><span>convert</span></button> -->
+		<span class="result" id="result"></span>
+		<br/>
+		<span class="error" id="error"></span>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="ip.js"></script>
+	<script>
+		$(function(){
+      $('#convert').click(function(){
+        var ipAddr = $('#ip').val();
+        if(ipAddr){
+          try {
+            var result = IP.toDecimal(ipAddr);
+            $('#result').text(result);
+          } catch (ex) {
+            $('#result').text('Invalid IP address!');
+          }
+        }else{
+          $('#result').text('Please enter an IP!');
+        }
+      });
+		});
+	</script>
+</body>
+</html>
